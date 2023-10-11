@@ -1,0 +1,11 @@
+{{#partial "principal" }}
+    <h1>Mi guardarropas: {{nombre}}</h1>
+    <ul>
+        {{#prendas}}
+            <li><a href="/guardarropas/{{../id}}/prendas/{{id}}">{{nombre}}</a></li>
+        {{/prendas}}
+    </ul>
+    <a href="/guardarropas/{{id}}/prendas/nueva">Crea tu propia prenda para este guardarropas</a>
+{{/partial}}
+
+{{> layout.html.hbs }}
