@@ -6,7 +6,7 @@ import model.Guardarropa;
 import model.Prenda;
 import java.util.ArrayList;
 import java.util.List;
-
+import model.Usuario;
 /**
  * Ejecutar antes de levantar el servidor por primera vez
  *
@@ -20,19 +20,25 @@ public class Bootstrap implements WithSimplePersistenceUnit {
 
   public void run() {
     withTransaction(() -> {
+      var usuario = new Usuario("franco", "flbulgarelli@gmail.com", "123456");
+      persist(usuario);
       Prenda prenda1= new Prenda("Pantalon", Color.AZUL);
+      persist(prenda1);
       Prenda prenda2= new Prenda("Remera", Color.AZUL);
+      persist(prenda2);
+      Prenda prenda3= new Prenda("Remera", Color.AZUL);
+      persist(prenda3);
       List<Prenda> prendas= new ArrayList<>();
-      List<Prenda> prendas2= new ArrayList<>();
+      Guardarropa guardarropa1 = new Guardarropa("Chau", prendas);
+      Guardarropa guardarropa2 = new Guardarropa("Hola", prendas);
+
       prendas.add(prenda1);
       prendas.add(prenda2);
-      prendas2.add(prenda1);
-      prendas2.add(prenda2);
-      persist(prenda1);
-      persist(prenda2);
+      prendas.add(prenda3);
 
-      persist(new Guardarropa("Hola", prendas));
-      persist(new Guardarropa("Chau", prendas2));
+      persist(guardarropa1);
+      persist(guardarropa2);
+
 
 
     });

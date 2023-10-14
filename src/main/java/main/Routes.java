@@ -3,6 +3,7 @@ package main;
 import controller.DemoController;
 import controller.GuardarropasController;
 import controller.PrendasController;
+import controller.SesionController;
 import io.github.flbulgarelli.jpa.extras.simple.WithSimplePersistenceUnit;
 import spark.ModelAndView;
 import spark.Spark;
@@ -27,6 +28,7 @@ public class Routes implements WithSimplePersistenceUnit {
     DemoController demoController = new DemoController();
     GuardarropasController guardarropasController = new GuardarropasController();
     PrendasController prendasController = new PrendasController();
+    SesionController sesionController = new SesionController();
 
     Spark.get("/", demoController::listar, engine);
     Spark.get("/guardarropas", guardarropasController::listar, engine);
@@ -35,6 +37,8 @@ public class Routes implements WithSimplePersistenceUnit {
     Spark.get("/guardarropas/:id/prendas/nueva", prendasController::nueva, engine);
     Spark.get("/guardarropas/:id/prendas/:idPrenda", prendasController::buscar, engine);
     Spark.get("/guardarropas/:id/prendas/:idPrenda/borrar", prendasController::borrar, engine);
+    Spark.get("/login", sesionController::mostrarLogin, engine);
+    Spark.post("/login", sesionController::iniciarSesion);
 
     Spark.exception(PersistenceException.class, (e, request, response) -> {
       response.redirect("/500"); //TODO

@@ -20,7 +20,7 @@ public class ContextTest implements SimplePersistenceTest {
     var guardarropa = new Guardarropa("primavera", prenda);
     guardarropa.agregarPrenda(pantalon);
 
-    var usuario = new Usuario("dani", "dani@dani.com");
+    var usuario = new Usuario("dani", "dani@dani.com", "123");
     usuario.agregarGuardarropa(guardarropa);
 
     persist(usuario);

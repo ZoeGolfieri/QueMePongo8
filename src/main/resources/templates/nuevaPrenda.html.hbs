@@ -1,3 +1,4 @@
+{{#partial "principal"}}
 <form method="POST" action="/guardarropas/{{id}}/prendas">
     <label for="nombre">Nombre</label>
     <input name="nombre" type="text">
@@ -7,3 +8,5 @@
 
     <input type="submit">
 </form>
+{{/partial}}
+{{> layout.html.hbs }}
