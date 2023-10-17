@@ -7,7 +7,11 @@
 <body>
 	<nav>
 	    <ol>
-            <li><a href="/guardarropas">Guardarropas</a></li>
+	        {{#if sesionIniciada}}
+	            <li><a href="/guardarropas">Guardarropas</a></li>
+	            {{else}}
+	            <li><a href="/login">Iniciar sesion</a></li>
+	        {{/if}}
             <li><a href="/">Home</a></li>
         </ol>
 	</nav>

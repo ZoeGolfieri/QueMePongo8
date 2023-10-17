@@ -20,7 +20,6 @@ public class SesionController {
       Usuario usuario = RepositorioUsuarios.instance().buscarPorUsuarioYContrasenia(
           request.queryParams("nombre"),
           request.queryParams("contrasenia"));
-
       request.session().attribute("user_id", usuario.getId());
       response.redirect("/"); // TODO aca va a convenir leer el origen
       return null;
